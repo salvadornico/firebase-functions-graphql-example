@@ -5,25 +5,25 @@ import schema from "./data/schema"
 import { printSchema } from "graphql/utilities/schemaPrinter"
 
 const setupGraphQLServer = () => {
-  const graphQLServer = express()
+	const graphQLServer = express()
 
-  graphQLServer.use(
-    "/graphql",
-    bodyParser.json(),
-    graphqlExpress({ schema, context: {} })
-  )
+	graphQLServer.use(
+		"/graphql",
+		bodyParser.json(),
+		graphqlExpress({ schema, context: {} })
+	)
 
-  graphQLServer.use(
-    "/graphiql",
-    graphiqlExpress({ endpointURL: "/api/graphql" })
-  )
+	graphQLServer.use(
+		"/graphiql",
+		graphiqlExpress({ endpointURL: "/api/graphql" })
+	)
 
-  graphQLServer.use("/schema", (req, res) => {
-    res.set("Content-Type", "text/plain")
-    res.send(printSchema(schema))
-  })
+	graphQLServer.use("/schema", (req, res) => {
+		res.set("Content-Type", "text/plain")
+		res.send(printSchema(schema))
+	})
 
-  return graphQLServer
-}
+	return graphQLServer
+};
 
 export default setupGraphQLServer

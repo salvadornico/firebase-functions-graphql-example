@@ -15,11 +15,8 @@
     "url": "https://github.com/jthegedus/firebase-functions-graphql-example.git"
   },
   "scripts": {
-    "precommit": "lint-staged",
     "predeploy": "yarn package:functions",
     "deploy": "firebase deploy",
-    "format":
-      "prettier --write \"firebaseFunctions/**/*{.js, .json}\" && sort-package-json",
     "postinstall": "cd firebaseFunctions && yarn",
     "prepackage:functions": "rimraf \"dist/functions\"",
     "package:functions":
@@ -36,8 +33,5 @@
     "prettier": "^1.7.4",
     "rimraf": "^2.6.2",
     "sort-package-json": "^1.7.1"
-  },
-  "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"]
   }
 }
