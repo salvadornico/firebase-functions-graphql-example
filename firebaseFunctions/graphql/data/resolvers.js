@@ -1,12 +1,33 @@
-const authors = [
-	{ id: 1, firstName: "Tom", lastName: "Coleman" },
-	{ id: 2, firstName: "Sashko", lastName: "Stubailo" }
+const authors = [{
+	id: "bPSKDXSUyLFeoKf7sj2q",
+	firstName: "Tom",
+	lastName: "Coleman"
+},
+{
+	id: "bE4gU0SnIMZUYeAEOUjg",
+	firstName: "Sashko",
+	lastName: "Stubailo"
+}
 ]
 
-const posts = [
-	{ id: 1, authorId: 1, title: "Introduction to GraphQL", votes: 2 },
-	{ id: 2, authorId: 2, title: "GraphQL Rocks", votes: 3 },
-	{ id: 3, authorId: 2, title: "Advanced GraphQL", votes: 1 }
+const posts = [{
+	id: "8dyfoer8yfd8s",
+	authorId: "bPSKDXSUyLFeoKf7sj2q",
+	title: "Introduction to GraphQL",
+	votes: 2
+},
+{
+	id: "d78fnycn6cdsf",
+	authorId: "bE4gU0SnIMZUYeAEOUjg",
+	title: "GraphQL Rocks",
+	votes: 3
+},
+{
+	id: "dfc6afw6cbcsf",
+	authorId: "bE4gU0SnIMZUYeAEOUjg",
+	title: "Advanced GraphQL",
+	votes: 1
+}
 ]
 
 const resolveFunctions = {
@@ -14,12 +35,19 @@ const resolveFunctions = {
 		posts() {
 			return posts
 		},
-		author(_, { id }) {
+		authors() {
+			return authors
+		},
+		author(_, {
+			id
+		}) {
 			return authors.find(author => author.id === id)
 		}
 	},
 	Mutation: {
-		upvotePost(_, { postId }) {
+		upvotePost(_, {
+			postId
+		}) {
 			const post = posts.find(post => post.id === postId)
 			if (!post) {
 				throw new Error(`Couldn't find post with id ${postId}`)
