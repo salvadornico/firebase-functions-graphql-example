@@ -1,6 +1,8 @@
 ### Cloud Functions
 functions/
 
+firebaseFunctions/firestore/credential.json
+
 # Created by https://www.gitignore.io/api/web,node,linux,macos,windows
 
 ### Linux ###
